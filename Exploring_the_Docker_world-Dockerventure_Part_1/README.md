@@ -48,7 +48,7 @@ docker run -p 80:80 -d nginx
 
 And dadaaaaaah you have an nginx webserver up and running. To validate go to your web browser and type: `localhost:80` and you should see something like this:
 
-![](images/nginx_default_page-kgy5eu1x.png)
+![](images/nginx_default_page.png)
 
 Well done running your first docker container! That was easy, wasnt it? Let's go see what happened there. When we run this command docker tried to look for a docker image named `nginx`, couldnt find any so it went to Dockerhub and downloaded the latest image and then started it in a newly created container. Also with the `-p 80:80` option we instructed our container to expose traffic on our host IP at port 80 and route it to the container IP port 80, pure magic. The `-d` option runs the container in the background and allows us to continue using the same terminal for other stuff. To verify this go back to your terminal and run the command that lists our running containers:
 
@@ -58,7 +58,7 @@ docker ps
 
 And you should see something similar to this:
 
-![](images/docker_ps-kgzcasxu.png)
+![](images/docker_ps.png)
 
 Note there are different info there, you get your container id(every container has a unique id), the image from which it spawned, the default command used when the container starts, when was your container created, it's status, what ports are exposed and a random & usually funny name attached to it(if you dont specifically specify one)
 
@@ -108,7 +108,7 @@ docker logs webserver
 
 And you should see something similar to this:
 
-![](images/docker_logs_1-kgz4f8ml.png)
+![](images/docker_logs_1.png)
 
 Lets try to generate some more logs, go to your browser at `localhost:80` where our nginx webserver is exposed and hit the `refresh` button a couple of times.
 Now lets execute again:
@@ -119,7 +119,7 @@ docker logs webserver
 
 Now you should have more logs in your webserver showing all the get requests you just did:
 
-![](images/docker_logs_2-kgz4iidz.png)
+![](images/docker_logs_2.png)
 
 If you like also you can follow the logs in the terminal by specifying the `-f` flag. Try
 
@@ -143,7 +143,7 @@ docker help login
 
 And you get more information regarding the `login` command
 
-![](images/docker_help_login-kgzbw3gm.png)
+![](images/docker_help_login.png)
 
 Alright, lets say we are done with our quick demo and we would like to clean our containers. Go ahead and run `docker ps -a` to list all your containers, running or not. In order to remove them, we 'll use the `docker rm` command. If you try to use this command on a running container you 'll get an error that you `can't remove a running container`. We 'll use `-f` flag to force the deletion in this case, note that it will be the same if you fist stopped the running containers with the `docker stop` command. Lets go and remove both the 2 containers we created previously in one go:
 
