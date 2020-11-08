@@ -1,0 +1,17 @@
+FROM python:3.7-alpine
+FROM python:3.7-alpine
+
+ENV color=blue
+
+WORKDIR /server
+
+# copy the dependencies file to the working directory
+COPY requirements.txt .
+
+# install dependencies
+RUN pip install -r requirements.txt
+
+# copy the script file to the working directory 
+COPY server.py .
+ 
+CMD [ "python", "./server.py" ]
