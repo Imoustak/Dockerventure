@@ -2,11 +2,13 @@
 
 `TL;DR` Intro to Docker's basic functionallity and concepts. Keep reading if you are new to Docker or want to learn about it.
 
+![](images/docker_logo.png)
+
 Today we are going to focus on a fundamental modern software technology, Docker. We are trying to analyze Docker by answering three simple questions around it. `What` is Docker, `why` should we adopt it's usage and `when` is the right time for this. We are going to explain some of it's `basic components` and the high level picture of how they work together. Finally we are going `hands-on` on our first Docker trip by spawning a `containerized webserver in seconds!` If you are already familiar with Docker but would like to check the second part of this Docker adventure where we investigate more advanced topics, click here: [Taming the Docker beast]
 
 ## What is this sorcery
 
-Docker is an `open source tool` designed to make our lifes easier(or sometimes harder) regarding creating, building, deploying and run software applications. This is achieved by `packaging applications into containers` along with everything else they need, allowing them to be considered and deployed as one package. Our code with it's dependencies, libraries, tools, runtime environment and operating system are combined into `a standard unit of software` that can technically run in every environment without any other requirement, well apart from Docker itself being present. This is actually the magic of Docker, eliminating the need to care about different environments, installing dependencies while allowing our software to run on any machine. This means that Devs can focus on writing and developing their code  and Ops have a new flexible tool in their arsenal to help them manage complex software systems.
+Docker is an `open source tool` designed to make our lifes easier(or sometimes harder) regarding creating, building, deploying and run software applications. This is achieved by `packaging applications into containers` along with everything else they need, allowing them to be considered and deployed as one package. Our code with it's dependencies, libraries, tools, runtime environment and operating system are combined into `a standard unit of software` that can technically run in every environment without any other requirement, well apart from Docker itself being present. This is actually the magic of Docker, eliminating the need to care about different environments, installing dependencies while allowing our software to run on any machine. This means that Devs can focus on writing and developing their code and Ops have a new flexible tool in their arsenal to help them manage complex software systems.
 
 ## Why should I use Docker
 
@@ -38,7 +40,7 @@ Images are usually stored in registries and [Dockerhub](https://hub.docker.com/)
 
 ## Ok enough with the blah blah, show us
 
-Ok by now you should be full onboard on the Docker train chu chuuuu, demo time. If you dont have already Docker installed here is the link to the official documentation regarding [installation instructions](https://docs.docker.com/engine/install/) per platform. For this demo we are going to use the [nginx](https://www.nginx.com/) webserver image, which can be found [here](https://hub.docker.com/_/nginx).  
+Ok by now you should be full onboard on the Docker train chu chuuuu, demo time. If you dont have already Docker installed here is the link to the official documentation regarding [installation instructions](https://docs.docker.com/engine/install/) per platform. For this demo we are going to use the [nginx](https://www.nginx.com/) webserver image, which can be found [here](https://hub.docker.com/_/nginx).
 
 Go in your terminal and just run:
 
@@ -135,7 +137,7 @@ The Docker tool has a lot of useful commands and you 'll have to play a bit with
 docker help
 ```
 
-It returns a list of optios and commands. If for example you would like to learn more info regarding one specific command, for example the `login` command,  you can run:
+It returns a list of optios and commands. If for example you would like to learn more info regarding one specific command, for example the `login` command, you can run:
 
 ```bash
 docker help login
