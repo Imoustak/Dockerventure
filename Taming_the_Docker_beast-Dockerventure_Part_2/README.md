@@ -8,9 +8,9 @@ In this second part of the `Dockerventure` series we are going to focus on how w
 
 ## Docker images & Dockerfile basics
 
-In Docker's world the images definitions are described inside a file called `Dockerfile`. The Dockerfile describes how to assemble an environment for a container that contains all the necessary information and metadata on how to run a container based on this image. In order to contenairize our applications we have to write Dockerfiles that define step by step how are images are built.
+In Docker's world the image definition is described inside a file called `Dockerfile`. The Dockerfile describes how to assemble an environment for a container that contains all the necessary information and metadata on how to run it based on this image. In order to containerize our applications we have to write Dockerfiles that define step by step how are images are built.
 
-Lets look at one Dockerfile example and discuss it's building blocks. This Dockerfile defines an image that basically sets up a python flask server and shows a message with a color that we picked.
+Lets look at one Dockerfile and discuss it's building blocks. This Dockerfile defines an image that basically sets up a python flask server and shows a message with a color that we picked.
 
 ```Dockerfile
 FROM python:3.7-alpine
@@ -33,7 +33,7 @@ COPY server.py .
 CMD [ "python", "./server.py" ]
 ```
 
-The order of the commands in a Dockerfile matters as they are executed top down and each one of them is actually considered as one layer of our image.
+`The order` of the commands in a Dockerfile matters as they are executed `top down` and each one of them is actually considered as `one layer` of our image.
 
 ### FROM
 
@@ -41,11 +41,11 @@ Lets start from the `FROM` command which is required in every Dockerfile. Its th
 
 ### ENV
 
-`ENV` refers to environment variable and is one of the ways to set them. These environtment variables are used extensively to inject key/value pairs for building and running containers. Environment variables are quite handy for these uses cases as they work on every os, config, environment. In our case we set the `color` we picked.
+`ENV` refers to environment variable and is one of the ways to set them. These environment variables are used extensively to inject key/value pairs for building and running containers. Environment variables are quite handy for these uses cases as they work on every os, config, environment. In our case we set the `color` we picked.
 
 ### RUN
 
-`RUN` command is used to execute shell commands inside the container while it's building it. We use `RUN` to create files, folder, install dependencies, run shell scripts and various other tasks that we would like to run inside our container at creation time in order to prepare it. In order to combine multiple commands with the same `RUN` statement you can usee `&&`. This way we include multiple commands in a single layer in our image.
+`RUN` command is used to execute shell commands inside the container while it's building it. We use `RUN` to create files, folders, install dependencies, run shell scripts and various other tasks that we would like to run inside our container at creation time in order to prepare it. To combine multiple commands with the same `RUN` statement you can usee `&&`. This way we can include multiple commands in a single layer in our image.
 
 ### WORKDIR
 
@@ -53,7 +53,7 @@ Lets start from the `FROM` command which is required in every Dockerfile. Its th
 
 ### COPY
 
-`COPY` is used in order to copy files inside the container. This is usefull in order to transfer for example executable files and various other files used by the container. In our case we copy our python script along with its dependencies.
+`COPY` is used in order to copy files inside the container. This is usefull in order to transfer for example executable files and various other files used by the container. In our case we copy our python script along with its dependencies definitions.
 
 ### CMD
 
@@ -61,7 +61,7 @@ Lets start from the `FROM` command which is required in every Dockerfile. Its th
 
 ## Build an image from a Dockerfile
 
-In order to build our Dockerfile and produce an image that can be used to create a containerized version of our app, we need to execute the `docker build` command. The docker build command requires just a path to use in order to set the build context if keep the default name `Dockerfile`. If we choose to pick a custom Dockerfile name it can be specified with the `-f` flag. We can also specify a custom tag and a repository at which to save the new image with the `-t` flag.
+In order to build our Dockerfile and produce an image that can be used to create a containerized version of our app, we need to execute the `docker build` command. The docker build command requires just a path in order to set the `build context`, the directory where to build from. That is enough if we use the default name `Dockerfile` for our build files. If we choose to pick a custom Dockerfile name, we can specify this with the `-f` flag. We can also specify a custom tag and a repository at which to save the new image with the `-t` flag.
 
 In order to build our image we have to run this command from the directory where our `Dockerfile1` lives.
 
@@ -71,7 +71,7 @@ docker build -t myflaskserver:0.0.1 -f Dockerfile1 .
 
 In the above command we specify `-t` flag and we add a custom tag for our image, `myflaskserver`. We can also define a numbered version after `:` like `0.0.1`.
 
-Alright if you try the above command with our Dockerfile you should have built an image locally. Lets verify this by executing:
+Alright if you tried the above command with our Dockerfile you should have built an image locally. Lets verify this by executing:
 
 ```bash
 docker images
@@ -122,7 +122,7 @@ And then we can simply run:
 docker push moustakis/myflaskserver:0.0.1
 ```
 
-This will automatically create a public repository for our image go ahead and explore your newliy published image [here](https://hub.docker.com/repositories). Congrats on your first published image!
+This will automatically create a public repository for our image. Go ahead and explore your newliy published image [here](https://hub.docker.com/repositories). Congrats on your first published image!
 
 ## Dockerfile Best Practises
 
@@ -149,7 +149,7 @@ Keep in mind that containers by nature are destroyed and replaced all the time s
 
 ### Use .dockerignore
 
-Similar to `.gitignore`, used to exlude filers that aren't relevant to thw build.
+Similar to `.gitignore`, used to exlude files that aren't relevant to the build.
 
 ### Multi-stage builds FTW
 
@@ -185,7 +185,7 @@ ENTRYPOINT [ "python" ]
 CMD ["./server.py" ]
 ```
 
-In the above Dockerfile we use the `builder` stage to install build our dependencies but stip them from our final application image. The first stage is only used for building dependencies and we copy to our final stage only the necessary files that produced from the first stage. In order to define a stage we use the `as` to the `FROM` command as shown.
+In the above Dockerfile we use the `builder` stage to install build our dependencies but strip them from our final application image. The first stage is only used for building dependencies and we copy to our final stage only the necessary files that produced from the first stage. In order to define a stage we use the `as` arguement to the `FROM` command as shown.
 
 Go ahead and build this image and then run `docker images` and compare the size of the two images, the second one should be smaller:
 
@@ -200,7 +200,7 @@ It's never a good idea to install more stuff than you need, keep it simple and a
 
 ### One container for one job
 
-Each of your images should be defined to execute one specific job. The Docker architecture favours decoupling applications as much as possible so try to separate your containers as much as possible. This way you can achieve horizontal scaling, reusability, easier maintance and faster development lifecycles.
+Each of your images should be defined to execute one specific job. The Docker architecture favours decoupling applications as much as possible so try to separate your containers responsibilities as much as possible. This way you can achieve horizontal scaling, reusability, easier maintance and faster development lifecycles.
 
 ## Some extra useful Dockerfile instructions
 
@@ -216,7 +216,7 @@ Defines the ports on which the container listens for connections to be used.
 
 ## ENTRYPOINT
 
-Defines the default command to run in container if specified. To overwrite we need to specify the command `--entrypoint` at runtime. If only `CMD` instruction exists then the `CMD` is executed and can be overwritten by placing in the end of the `docker run` another command. If an `ENTRYPOINT` is defined in a dockerfile then the value of `CMD` e.g. `CMD ["5"]` will be passed as a parameter to the value of ENTRYPOINT `ENTRYPOINT["sleep]`. In our second `Dockerfile` example we modifed the initial
+Defines the default command to run in a container if specified. To overwrite we need to specify the command `--entrypoint` at runtime. If only `CMD` instruction exists then the `CMD` is executed and can be overwritten by placing in the end of the `docker run` another command. If an `ENTRYPOINT` is defined in a dockerfile then the value of `CMD` e.g. `CMD ["5"]` will be passed as a parameter to the value of `ENTRYPOINT` `ENTRYPOINT ["sleep]`. In our second `Dockerfile` example we modifed the initial
 
 ```
 CMD [ "python", "./server.py" ]
@@ -237,4 +237,4 @@ Used to define some persistent volumes for any mutable parts of the image. Anyth
 
 ## Summary
 
-Alright second part of our Dockerventure has come to an end. Hope you enjoyed our deep dive to `Dockerfiles`. We explained and analyzed some of the fundamental and most used `Dockerfile instructions`, wrote a simple Dockerfile for our python server and learned how to build and push our custom images to `Dockerhub`. In the end we saw some best practices around Dockerfiles and tried to implement some of these in order to improve our first `Dockerfile`.
+That concludes the second part of our Dockerventure. Hope you enjoyed our deep dive to `Dockerfiles` as much as I did. We explained and analyzed some of the fundamental and most used `Dockerfile instructions`, wrote a simple Dockerfile for our python server and learned how to build and push our custom images to `Dockerhub`. In the end we saw some `best practices` around Dockerfiles and tried to implement some of these in order to improve our first Dockerfile.
