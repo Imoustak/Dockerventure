@@ -4,7 +4,7 @@
 
 ![](images/docker_logo.png)
 
-Today we are going to focus on a fundamental modern software technology, Docker. We are trying to analyze Docker by answering three simple questions around it. `What` is Docker, `why` should we adopt it's usage and `when` is the right time for this. We are going to explain some of it's `basic components` and the high level picture of how they work together. Finally we are going `hands-on` on our first Docker trip by spawning a `containerized webserver in seconds!` If you are already familiar with Docker but would like to check the second part of this Docker adventure where we investigate more advanced topics, click here: [Taming the Docker beast]
+Today we are going to focus on a fundamental modern software technology, Docker. We are trying to analyze Docker by answering three simple questions around it. `What` is Docker, `why` should we adopt it's usage and `when` is the right time for this. We are going to explain some of it's `basic components` and the high level picture of how they work together. Finally we are going `hands-on` on our first Docker trip by spawning a `containerized webserver in seconds!` If you are already familiar with Docker but would like to check the second part of this Docker adventure where we investigate more advanced topics, click here: [Taming the Dockerfile beast]
 
 ## What is this sorcery - Docker Intro
 
