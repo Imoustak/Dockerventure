@@ -20,17 +20,17 @@ In the previous 2 parts we 've already seen:
 `docker rm` \
 `docker build` \
 `docker images` \
-`docker push` \
+`docker push`
 
-So I ll move forward to other more sneaky commands. If you want to check how the previous Docker commands can be used in actions check my 2 previous posts [Exploring the Docker world - Dockerventure Part 1]()  & [Taming the Docker beast - Dockerventure Part 2]()
+So I 'll move forward to other more sneaky commands. If you want to check how the previous Docker commands can be used in action check my 2 previous posts [Exploring the Docker world - Dockerventure Part 1]()  & [Taming the Docker beast - Dockerventure Part 2]()
 
 ### docker --version
 
-Quite self explanatory, shows you the currently installed version.
+Quite self explanatory, shows the currently installed version.
 
 ### docker rmi
 
-Used to delete docker images, more or less similar to `docker rm` but for images instead of containers
+Used to delete docker images. More or less similar to `docker rm` but for images instead of containers
 
 ### docker exec
 
@@ -59,8 +59,8 @@ Manage volumes by combining with the subcommands `create` , `inspect` `ls` `prun
 
 ### docker stats
 
-Get a live stream of resource usage of your running containers. Quite useful for debugging purposes shows CPU, Mem, Net I/o, Block I/o , Pids
+Get a live stream of resource usage of your running containers. Quite useful for debugging purposes as it shows info about CPU, Mem, Net I/o, Block I/o , Pids
 
 ### docker network
 
-Manage network by combining with the subcommands `create` , `connect`, `disconnect`, `inspect`, `ls`, `prune`, `rm`
+Manage docker networking by combining with the subcommands `create` , `connect`, `disconnect`, `inspect`, `ls`, `prune`, `rm`
