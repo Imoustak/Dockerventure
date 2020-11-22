@@ -1,4 +1,4 @@
-# Taming the Docker beast - Dockerventure Part 2
+# Taming the Dockerfile beast - Dockerventure Part 2
 
 `TL;DR` Build and share your own managed docker images.
 
