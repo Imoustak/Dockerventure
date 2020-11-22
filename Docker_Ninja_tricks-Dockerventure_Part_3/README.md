@@ -10,17 +10,17 @@ So far we 've seen the basic functinality of Docker, had a quick look on common 
 
 In the previous 2 parts we 've already seen:
 
-`docker run`
-`docker ps` & `docker ps -a`
-`docker stop`
-`docker start`
-`docker logs`
-`docker help`
-`docker login`
-`docker rm`
-`docker build`
-`docker images`
-`docker push`
+`docker run` \
+`docker ps` & `docker ps -a` \
+`docker stop` \
+`docker start` \
+`docker logs` \
+`docker help` \
+`docker login` \
+`docker rm` \
+`docker build` \
+`docker images` \
+`docker push` \
 
 So I ll move forward to other more sneaky commands. If you want to check how the previous Docker commands can be used in actions check my 2 previous posts [Exploring the Docker world - Dockerventure Part 1]()  & [Taming the Docker beast - Dockerventure Part 2]()
 
